@@ -25,6 +25,6 @@
     "inquirer": "^8.2.4"
   },
   "devDependencies": {
-    "jist": "^1.0.6"
+    "jest": "^28.1.1"
   }
 }
