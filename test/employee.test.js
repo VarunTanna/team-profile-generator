@@ -1,5 +1,4 @@
 const Employee = require("../lib/employee")
-// tutor help
 test('Can create employee instance', () => {
     var e = new Employee();
     expect(typeof(e)).tobe("Object");
