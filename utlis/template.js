@@ -1,6 +1,4 @@
-
-const template = (data) => {
-    const generateManager = manager => {
+     const generateManager = manager => {
         return `
         <div class="card employee-card">
         <div class="card-header">
@@ -54,17 +52,17 @@ const generateIntern = intern => {
     `;
 };
 
-const employeeCards = Employee => {
+const employeeCards = teamArray => {
     let employeeHtml = "";
-    for(i = 0; i < Employee.length; i++) {
-        if(Employee[i].getRole() === "Manager") {
-            employeeHtml += generateManager(Employee[i])
+    for(i = 0; i < teamArray.length; i++) {
+        if(teamArray[i].getRole() === "Manager") {
+            employeeHtml += generateManager(teamArray[i])
         }
-        if(Employee[i].getRole() === "Engineer") {
-            employeeHtml += generateEngineer(Employee[i])
+        if(teamArray[i].getRole() === "Engineer") {
+            employeeHtml += generateEngineer(teamArray[i])
         }
-        if(Employee[i].getRole() === "Intern") {
-            employeeHtml += generateIntern(Employee[i])
+        if(teamArray[i].getRole() === "Intern") {
+            employeeHtml += generateIntern(teamArray[i])
         }
     }
     return employeeHtml;
@@ -97,7 +95,6 @@ const template = data  => {
 
 </html>`
 }
-writeToFile(template(data));
-}
+
 module.exports = template;
 

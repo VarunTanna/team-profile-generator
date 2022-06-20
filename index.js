@@ -1,10 +1,11 @@
 const inquirer = require("inquirer");
 const template = require('./utlis/template.js')
+const writeFile = require('./utlis/write-file.js');
 
 const { Manager, managerQuestionsArr } = require('./lib/manager');
 const { Engineer, engineerQuestionsArr } = require('./lib/engineer');
 const { Intern, internQuestionsArr } = require('./lib/intern');
-const template = require("./utlis/template");
+
 
 const teamArray = []
 
@@ -51,10 +52,10 @@ const employeePrompt = () => {
     .then( answers => {
         if (answers.employeeType === 'addEngineer') {engineerQuestions(); }; 
         if (answers.employeeType === 'addIntern') {internQuestions(); };
-        if (answers.employeeType === 'Done') {
+        if (answers.employeeType === 'done') {
             let html = template(teamArray)
             console.log("Finished!")
-            writeToFile(html);
+            writeFile(html);
         }
     })
 }
