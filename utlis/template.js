@@ -1,6 +1,5 @@
-const Employee = require("../lib/employee");
 
-const generateTeam = team => {
+const template = (data) => {
     const generateManager = manager => {
         return `
         <div class="card employee-card">
@@ -17,9 +16,9 @@ const generateTeam = team => {
         </div>
     </div>
     `}
-};
 
-const generateManager = engineer => {
+
+const generateEngineer = engineer => {
     return `
     <div class="card employee-card">
     <div class="card-header">
@@ -37,7 +36,7 @@ const generateManager = engineer => {
     `;
 };
 
-const generateManager = intern => {
+const generateIntern = intern => {
     return `
     <div class="card employee-card">
     <div class="card-header">
@@ -55,14 +54,50 @@ const generateManager = intern => {
     `;
 };
 
-const html = [];
+const employeeCards = Employee => {
+    let employeeHtml = "";
+    for(i = 0; i < Employee.length; i++) {
+        if(Employee[i].getRole() === "Manager") {
+            employeeHtml += generateManager(Employee[i])
+        }
+        if(Employee[i].getRole() === "Engineer") {
+            employeeHtml += generateEngineer(Employee[i])
+        }
+        if(Employee[i].getRole() === "Intern") {
+            employeeHtml += generateIntern(Employee[i])
+        }
+    }
+    return employeeHtml;
+}
 
-html.push(team 
-    .filer(employee => employee.getRole() === "Manager")
-    .map(manager => generateManager(manager))
-    );
-html.push(team 
-    .filer(employee => employee.getRole() === "Engineer")
-    .map(engineer => generateManager(engineer))
-    );
+const template = data  => {
+    return `
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Team Profile Generator!</title>
+</head>
+<body>
+    <header class="row">
+        <div class="col-12 jumbotron mb-3">
+            <h1 class="text-center">My Team!</h1>
+        </div>
+    </header>
+    <main>
+    ${employeeCards(data)}
+    </main>
+</body>
+
+</html>`
+}
+writeToFile(template(data));
+}
+module.exports = template;
 
