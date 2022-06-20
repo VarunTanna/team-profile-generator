@@ -1,11 +1,11 @@
-const Inquirer = require("inquirer");
+const inquirer = require("inquirer");
 const Engineer = require("./lib/engineer")
 const Manager = require('./lib/manager')
 const fs = require('fs');
-const inquirer = require("inquirer");
-teamArray = [];
+const Intern = require("./lib/intern");
+questionsArray = [];
 
-function generateTeam () {
+function runApp () {
     function createTeam () {
         inquirer.prompt([{
             type: 'list',
@@ -58,7 +58,7 @@ function addManager() {
         },
     ]).then(answers => {
         const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
-        teamArray.push(manager);
+        questionsArray.push(manager);
         createTeam();
     });
 }
@@ -91,6 +91,54 @@ function addEngineer() {
         },
     ]).then(answers => {
         const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-        teamArray.push(enginner)
+        questionsArray.push(engineer)
+        createTeam();
     })
 }
+
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internName",
+            message: "What is the intern's name?"
+
+        },
+        {
+            type: "input",
+            name: "internId",
+            message: "What is the intern's Id number?"
+
+        },
+        {
+            type: "input",
+            name: "internEmail",
+            message: "What is the intern's email?"
+
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What school does the intern go to?"
+
+        },
+    ]).then(answers => {
+        const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+        questionsArray.push(intern);
+        createTeam();
+    });
+}
+
+function writeToFile(fileName, data) {
+    let content = generateReadMe(data);
+    fs.writeFile("./ouput/README.md", content, function (error) {
+        if (error) {
+            return console.log(error)
+        }
+        console.log("Success")
+    })
+    createTeam();
+}
+
+
+runApp();
