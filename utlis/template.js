@@ -84,8 +84,8 @@ const template = data  => {
 </head>
 <body>
     <header class="row">
-        <div class="col-12 jumbotron mb-3">
-            <h1 class="text-center">My Team!</h1>
+        <div class="col-12 jumbotron mb-3 bg-dark">
+            <h1 class="text-center text-light">My Team!</h1>
         </div>
     </header>
     <main class="container">

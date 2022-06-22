@@ -1,3 +1,7 @@
 #cardrow {
     justify-content: space-around;
 }
+
+html {
+    font-family: "Fira Code", "JetBrains Mono NL", "monospace";
+}
