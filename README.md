@@ -1,4 +1,4 @@
-# team-profile-generator
+# Team-Profile-Generator
 
 # Description
 The user is building a Team Profile Generator to showcase different roles and imformation aobout their employees. Once the user inputs all of their data it is generated into an HTML and displays each team members specific information.
