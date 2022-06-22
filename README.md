@@ -30,4 +30,6 @@ THEN I exit the application, and the HTML is generated
 
 ## Links
 ![Generated HTML screenshot](teamimage.png)
-![Walktrough Video](https://drive.google.com/file/d/1Y9QR2e9XPy6vcuB8nQPRAMFp2ERZdoMQ/view?usp=sharing)
+
+
+(https://drive.google.com/file/d/1Y9QR2e9XPy6vcuB8nQPRAMFp2ERZdoMQ/view?usp=sharing)
