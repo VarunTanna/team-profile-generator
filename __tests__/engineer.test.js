@@ -1,16 +1,16 @@
-const Engineer = require("../lib/engineer");
+const {Engineer} = require("../lib/engineer");
 
 //get github user name via git gethub method
 test("can set Github via constructor", () => {
     const testValue = "GitHubUsername";
     const e = new Engineer("Varun", 1, "email@email.com", testValue);
-    expect(e.github).tobe(testValue);
+    expect(e.github).toBe(testValue);
 })
 // get role should retren eng
 test("getRole() should return eng", () => {
     const testValue = "Engineer";
     const e = new Engineer("Varun", 1, "email@email.com", "GitHubUsername");
-    expect(e.github).tobe(testValue);
+    expect(e.getRole()).toBe(testValue);
 })
 
 
@@ -18,5 +18,5 @@ test("getRole() should return eng", () => {
 test("can get github via github()",() => {
     const testValue = "GitHubUsername";
     const e = new Engineer("Varun", 1, "email@email.com", testValue);
-    expect(e.getGithub()).tobe(testValue);
+    expect(e.getGithub()).toBe(testValue);
 })
